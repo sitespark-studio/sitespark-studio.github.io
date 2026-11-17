@@ -1,0 +1,2402 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- TODO: after going live add: <link rel="canonical" href="https://YOUR-LIVE-URL/"> -->
+
+  <title>SiteSpark Studio | Premium Websites for Local Businesses</title>
+  <meta name="description" content="SiteSpark builds premium, mobile-friendly websites for local businesses in India. See your free demo first. Pay only if you love it.">
+  <meta name="theme-color" content="#070B14">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SiteSpark Studio | Your Business Deserves a Better Website">
+  <meta property="og:description" content="Get a free website demo for your local business.">
+  <!-- TODO: after going live add og:url and make og:image an absolute https URL -->
+  <meta property="og:image" content="images/og-image.jpg">
+
+  <!-- Inline SVG favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Cpath d=%27M22 2L8 22H18L15 38L32 16H21L22 2Z%27 fill=%27%23FFB020%27/%3E%3C/svg%3E">
+
+  <!-- Google Fonts with system fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- LocalBusiness structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "SiteSpark Studio",
+    "description": "Premium mobile-first websites for local businesses in India.",
+    "telephone": "+919653132622"
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       1. ROOT SETTINGS
+    ========================================= */
+
+    :root {
+      --bg: #070B14;
+      --surface: #0D1422;
+      --surface-2: #111B2D;
+      --border: rgba(255,255,255,.09);
+      --white: #FFFFFF;
+      --muted: #A3AEC0;
+      --amber: #FFB020;
+      --orange: #FF6A00;
+      --gradient: linear-gradient(110deg,#FFB020,#FF6A00);
+      --font-heading: 'Sora', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --radius: 20px;
+      --container: 1160px;
+      --shadow: 0 20px 70px rgba(0,0,0,.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::selection {
+      background: var(--amber);
+      color: #070B14;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--amber);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 17px;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 20px;
+      height: 2px;
+      background: var(--gradient);
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(30px,4vw,46px);
+      line-height: 1.2;
+      letter-spacing: -1.6px;
+      max-width: 700px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 610px;
+      margin-top: 16px;
+      font-size: 16px;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 13px 23px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-size: 14px;
+      font-weight: 800;
+      transition: .25s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      color: #101019;
+      background: var(--gradient);
+      box-shadow: 0 8px 28px rgba(255,135,0,.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(255,135,0,.3);
+    }
+
+    .btn-outline {
+      color: var(--white);
+      background: rgba(255,255,255,.035);
+      border-color: rgba(255,255,255,.16);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--amber);
+      background: rgba(255,176,32,.07);
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .glass-card {
+      background: linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* =========================================
+       2. HEADER AND NAVIGATION
+    ========================================= */
+
+    .header {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7,11,20,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      color: var(--amber);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a:not(.btn) {
+      color: #B8C1D0;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .nav-links a:not(.btn):hover {
+      color: var(--amber);
+    }
+
+    .nav-links .btn {
+      min-height: 43px;
+      padding: 10px 17px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 23px;
+    }
+
+    /* =========================================
+       3. HERO
+    ========================================= */
+
+    .hero {
+      position: relative;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        linear-gradient(90deg,rgba(7,11,20,.97),rgba(7,11,20,.82) 52%,rgba(7,11,20,.48)),
+        url("images/hero-bg.jpg") center/cover no-repeat,
+        radial-gradient(circle at 80% 40%,#37220E,#070B14 65%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      right: 8%;
+      top: 10%;
+      background: rgba(255,137,0,.11);
+      filter: blur(100px);
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 45px;
+      padding-top: 65px;
+      padding-bottom: 65px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255,176,32,.09);
+      border: 1px solid rgba(255,176,32,.25);
+      color: #FFC45A;
+      padding: 8px 13px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      margin-bottom: 24px;
+    }
+
+    .spark-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 14px var(--amber);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(38px,5.1vw,66px);
+      line-height: 1.13;
+      letter-spacing: -2.7px;
+      max-width: 680px;
+    }
+
+    .hero-copy {
+      color: #B0BACB;
+      max-width: 520px;
+      font-size: 17px;
+      margin: 22px 0 28px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 23px;
+      color: #AEB8C8;
+      font-size: 13px;
+    }
+
+    .hero-note svg {
+      color: var(--amber);
+      width: 17px;
+      height: 17px;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 460px;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border: 1px solid rgba(255,176,32,.2);
+      border-radius: 50%;
+      box-shadow: 0 0 90px rgba(255,120,0,.08);
+    }
+
+    .hero-phone {
+      width: min(330px,90%);
+      max-height: 510px;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 25px 45px rgba(0,0,0,.6));
+    }
+
+
+    /* HERO VISUAL: browser window + WhatsApp demo chat */
+    .hv{--u:calc(100cqw / 520);position:relative;width:min(520px,100%);aspect-ratio:520/470;container-type:inline-size;z-index:2}
+    .hv *{box-sizing:border-box}
+    .hv-browser{position:absolute;left:0;top:calc(var(--u)*28);width:calc(var(--u)*400);height:calc(var(--u)*330);border-radius:calc(var(--u)*16);background:#0f1829;border:1px solid rgba(255,255,255,.12);box-shadow:0 25px 60px rgba(0,0,0,.55);overflow:hidden}
+    .hv-bar{height:calc(var(--u)*34);display:flex;align-items:center;gap:calc(var(--u)*6);padding:0 calc(var(--u)*12);background:#0a1120;border-bottom:1px solid rgba(255,255,255,.08)}
+    .hv-bar i{width:calc(var(--u)*9);height:calc(var(--u)*9);border-radius:50%;background:#2b3548}
+    .hv-bar i:nth-child(1){background:#ff5f57}.hv-bar i:nth-child(2){background:#febc2e}.hv-bar i:nth-child(3){background:#28c840}
+    .hv-url{margin-left:calc(var(--u)*10);flex:1;height:calc(var(--u)*18);border-radius:calc(var(--u)*9);background:#162036;color:#8fa0bb;font-size:calc(var(--u)*10);line-height:calc(var(--u)*18);padding:0 calc(var(--u)*10);font-family:var(--font-body)}
+    .hv-site{padding:calc(var(--u)*16) calc(var(--u)*20)}
+    .hv-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:calc(var(--u)*22)}
+    .hv-logo{font:800 calc(var(--u)*13)/1 var(--font-heading);color:#fff}
+    .hv-links{display:flex;gap:calc(var(--u)*8)}.hv-links b{width:calc(var(--u)*28);height:calc(var(--u)*5);border-radius:3px;background:#2b3a55}
+    .hv-h{font:800 calc(var(--u)*25)/1.15 var(--font-heading);color:#fff;max-width:80%}
+    .hv-h span{background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hv-l{height:calc(var(--u)*6);border-radius:3px;background:#243452;margin-top:calc(var(--u)*9)}
+    .hv-btns{display:flex;gap:calc(var(--u)*8);margin-top:calc(var(--u)*16)}
+    .hv-btns b{font:700 calc(var(--u)*10)/1 var(--font-body);padding:calc(var(--u)*8) calc(var(--u)*13);border-radius:calc(var(--u)*8);color:#10131c}
+    .hv-btns b:nth-child(1){background:var(--gradient)}.hv-btns b:nth-child(2){background:#25d366;color:#06240f}
+    .hv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*8);margin-top:calc(var(--u)*18)}
+    .hv-cards div{height:calc(var(--u)*58);border-radius:calc(var(--u)*10);background:linear-gradient(160deg,#1a2740,#121c30);border:1px solid rgba(255,255,255,.07)}
+    .hv-phone{position:absolute;right:0;bottom:0;width:calc(var(--u)*200);height:calc(var(--u)*370);border-radius:calc(var(--u)*30);background:#07090f;padding:calc(var(--u)*8);box-shadow:0 0 0 2px #2a3142 inset,0 30px 60px rgba(0,0,0,.6)}
+    .hv-screen{height:100%;border-radius:calc(var(--u)*23);overflow:hidden;background:#0b141a;display:flex;flex-direction:column}
+    .hv-wh{background:#1f2c34;padding:calc(var(--u)*20) calc(var(--u)*10) calc(var(--u)*9);display:flex;align-items:center;gap:calc(var(--u)*7)}
+    .hv-av{width:calc(var(--u)*24);height:calc(var(--u)*24);border-radius:50%;background:var(--gradient);display:grid;place-items:center;font-size:calc(var(--u)*12)}
+    .hv-wh strong{display:block;color:#e9edef;font:600 calc(var(--u)*11)/1.2 var(--font-body)}
+    .hv-wh small{color:#25d366;font:calc(var(--u)*8.5)/1 var(--font-body)}
+    .hv-chat{flex:1;padding:calc(var(--u)*12) calc(var(--u)*9);display:flex;flex-direction:column;gap:calc(var(--u)*8);background:#0b141a}
+    .hv-msg{align-self:flex-start;max-width:94%;background:#1f2c34;color:#e9edef;border-radius:calc(var(--u)*3) calc(var(--u)*10) calc(var(--u)*10) calc(var(--u)*10);padding:calc(var(--u)*8) calc(var(--u)*9);font:calc(var(--u)*10.5)/1.4 var(--font-body)}
+    .hv-msg em{display:block;text-align:right;color:#7d8d96;font:normal calc(var(--u)*8)/1 var(--font-body);margin-top:calc(var(--u)*4)}
+    .hv-prev{margin-top:calc(var(--u)*7);border-radius:calc(var(--u)*8);overflow:hidden;background:#0b141a}
+    .hv-prev i{display:block;height:calc(var(--u)*54);background:linear-gradient(135deg,#ffb020,#ff6a00 55%,#7a2cff)}
+    .hv-prev span{display:block;padding:calc(var(--u)*6) calc(var(--u)*8);font:600 calc(var(--u)*9.5)/1.3 var(--font-body)}
+    .hv-prev span small{display:block;color:#8696a0;font-weight:400;font-size:calc(var(--u)*8.5)}
+    .hv-chip{position:absolute;z-index:3;background:rgba(13,20,34,.92);border:1px solid rgba(255,176,32,.35);color:#fff;border-radius:999px;padding:calc(var(--u)*7) calc(var(--u)*12);font:600 calc(var(--u)*11)/1 var(--font-body);box-shadow:0 10px 30px rgba(0,0,0,.45);white-space:nowrap}
+    .hv-chip.c1{left:calc(var(--u)*-6);top:calc(var(--u)*6)}
+    .hv-chip.c2{left:calc(var(--u)*310);top:calc(var(--u)*0)}
+    .hv-chip.c3{left:calc(var(--u)*6);bottom:calc(var(--u)*52)}
+    .hv-chip.c4{left:calc(var(--u)*150);bottom:calc(var(--u)*6)}
+    @media (prefers-reduced-motion:no-preference){.hv-chip{animation:hvf 5s ease-in-out infinite}.hv-chip.c2{animation-delay:-1.2s}.hv-chip.c3{animation-delay:-2.4s}.hv-chip.c4{animation-delay:-3.6s}@keyframes hvf{50%{transform:translateY(-6px)}}}
+
+    /* =========================================
+       4. IMAGE PLACEHOLDERS
+    ========================================= */
+
+    .image-placeholder {
+      background:
+        radial-gradient(circle at 70% 25%,rgba(255,176,32,.19),transparent 35%),
+        linear-gradient(140deg,#182338,#101827 55%,#26170E);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-placeholder::after {
+      content: "SITESPARK";
+      position: absolute;
+      bottom: 12px;
+      right: 15px;
+      font-family: var(--font-heading);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,.3);
+    }
+
+    .image-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .niche-image,
+    .gallery-image {
+      background:
+        radial-gradient(circle at 60% 40%,rgba(255,176,32,.16),transparent 42%),
+        linear-gradient(135deg,#172338,#0C111D);
+    }
+
+    .niche-image {
+      aspect-ratio: 3 / 2;
+    }
+
+    .gallery-image {
+      aspect-ratio: 3 / 2;
+    }
+
+    /* =========================================
+       5. WHO WE BUILD FOR
+    ========================================= */
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 22px;
+      margin-top: 45px;
+    }
+
+    .audience-card {
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .audience-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(255,176,32,.35);
+    }
+
+    .audience-content {
+      padding: 24px;
+    }
+
+    .audience-content h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .audience-content p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .coming-badge {
+      display: inline-block;
+      background: rgba(255,176,32,.12);
+      color: var(--amber);
+      border: 1px solid rgba(255,176,32,.23);
+      border-radius: 30px;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 5px 10px;
+      margin-top: 13px;
+      letter-spacing: .8px;
+    }
+
+    /* =========================================
+       6. HOW IT WORKS
+    ========================================= */
+
+    .steps-section {
+      background: linear-gradient(180deg,transparent,rgba(255,255,255,.018),transparent);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 17px;
+      margin-top: 48px;
+    }
+
+    .step-card {
+      position: relative;
+      padding: 28px 23px;
+      min-height: 245px;
+    }
+
+    .step-number {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      color: rgba(255,255,255,.15);
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    .step-icon {
+      width: 53px;
+      height: 53px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: var(--amber);
+      background: rgba(255,176,32,.1);
+      border: 1px solid rgba(255,176,32,.19);
+      margin-bottom: 25px;
+    }
+
+    .step-icon svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* =========================================
+       7. BENEFITS
+    ========================================= */
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+      margin-top: 42px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 22px 17px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      min-height: 105px;
+      transition: .25s;
+    }
+
+    .benefit:hover {
+      border-color: rgba(255,176,32,.35);
+      background: rgba(255,176,32,.035);
+    }
+
+    .benefit-icon {
+      color: var(--amber);
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+    }
+
+    .benefit span {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    /* =========================================
+       8. SAMPLE DESIGNS
+    ========================================= */
+
+    .gallery-section {
+      background:
+        radial-gradient(ellipse at 50% 0%,rgba(255,135,0,.065),transparent 55%);
+    }
+
+    .gallery-tabs {
+      display: flex;
+      gap: 10px;
+      margin: 35px 0 27px;
+      flex-wrap: wrap;
+    }
+
+    .tab-button {
+      min-height: 45px;
+      padding: 10px 22px;
+      background: rgba(255,255,255,.04);
+      color: #AEB8C8;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .tab-button.active {
+      background: var(--gradient);
+      color: #101019;
+      border-color: transparent;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+      transition: .25s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,176,32,.3);
+    }
+
+    .gallery-card-content {
+      padding: 18px;
+    }
+
+    .gallery-card h3 {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
+
+    .gallery-card .btn {
+      min-height: 42px;
+      padding: 9px 15px;
+      font-size: 12px;
+      width: 100%;
+    }
+
+    .see-more-wrap{display:flex;justify-content:center;margin-top:28px}
+    .see-more-wrap[hidden]{display:none}
+    .gallery-card[hidden]{display:none}
+    .gallery-panel[hidden] {
+      display: none !important;
+    }
+
+    /* =========================================
+       9. PRICING
+    ========================================= */
+
+    .pricing-card {
+      max-width: 750px;
+      margin: 45px auto 0;
+      padding: 48px 30px;
+      text-align: center;
+      border-color: rgba(255,176,32,.25);
+      background:
+        radial-gradient(ellipse at 50% 0%,rgba(255,176,32,.11),transparent 60%),
+        var(--surface);
+    }
+
+    .pricing-card h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .price-placeholder {
+      font-family: var(--font-heading);
+      font-size: clamp(38px,7vw,64px);
+      font-weight: 800;
+      line-height: 1.3;
+      margin: 12px 0;
+      color: var(--amber);
+    }
+
+    .pricing-card p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 490px;
+      margin: 10px auto 25px;
+    }
+
+
+    .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:900px;margin:48px auto 0}
+    .plan{padding:36px 28px;text-align:center;display:flex;flex-direction:column;position:relative}
+    .plan.best{border-color:rgba(255,176,32,.45);background:radial-gradient(ellipse at 50% 0%,rgba(255,176,32,.13),transparent 60%),var(--surface)}
+    .plan h3{font-family:var(--font-heading);font-size:22px;margin-bottom:6px}
+    .plan .plan-for{color:var(--muted);font-size:14px;margin-bottom:14px}
+    .plan .price{font-family:var(--font-heading);font-size:clamp(38px,6vw,52px);font-weight:800;color:var(--amber);line-height:1.2}
+    .plan .once{color:var(--muted);font-size:13px;margin-bottom:20px}
+    .plan ul{list-style:none;text-align:left;display:grid;gap:11px;margin:0 auto 26px;padding:0;font-size:15px}
+    .plan li{padding-left:26px;position:relative;color:#dfe5f0}
+    .plan li::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:800}
+    .plan .btn{margin-top:auto;align-self:center}
+    .plan-tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gradient);color:#1b1305;font:700 12px/1 var(--font-body);padding:7px 14px;border-radius:999px;white-space:nowrap}
+    .plans-note{text-align:center;color:var(--muted);font-size:14px;max-width:640px;margin:26px auto 0}
+    @media (max-width:760px){.plans{grid-template-columns:1fr}}
+
+    /* =========================================
+       10. FAQ
+    ========================================= */
+
+    .faq-list {
+      max-width: 850px;
+      margin: 45px auto 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      padding: 20px 23px;
+      list-style: none;
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      color: var(--amber);
+      font-size: 24px;
+      font-weight: 400;
+      flex-shrink: 0;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-answer {
+      padding: 0 23px 22px;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 750px;
+    }
+
+    /* =========================================
+       11. CONTACT
+    ========================================= */
+
+    .contact-section {
+      background:
+        radial-gradient(ellipse at 50% 80%,rgba(255,126,0,.09),transparent 60%);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr .85fr;
+      gap: 35px;
+      margin-top: 45px;
+      align-items: start;
+    }
+
+    .contact-main {
+      padding: 35px;
+    }
+
+    .contact-main h3 {
+      font-family: var(--font-heading);
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .contact-main > p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 26px;
+    }
+
+    .contact-buttons {
+      display: grid;
+      gap: 13px;
+      margin-bottom: 28px;
+    }
+
+    .contact-buttons .btn {
+      width: 100%;
+      min-height: 56px;
+    }
+
+    .location-box {
+      border-top: 1px solid var(--border);
+      padding-top: 22px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .location-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 12px;
+      background: rgba(255,176,32,.1);
+      color: var(--amber);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .location-box small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .location-box strong {
+      font-size: 15px;
+    }
+
+    .contact-form {
+      padding: 32px;
+    }
+
+    .contact-form h3 {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      margin-bottom: 9px;
+    }
+
+    .contact-form > p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      min-height: 51px;
+      background: #080F1C;
+      border: 1px solid rgba(255,255,255,.13);
+      color: white;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .form-group select option {
+      background: #0D1422;
+    }
+
+    .contact-form button {
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    /* =========================================
+       12. FOOTER
+    ========================================= */
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 35px 0;
+      background: #060910;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-description {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .footer-copy {
+      color: #7D8899;
+      font-size: 12px;
+    }
+
+    /* =========================================
+       13. FLOATING WHATSAPP
+    ========================================= */
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 900;
+      width: 59px;
+      height: 59px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: #20C66B;
+      box-shadow: 0 7px 28px rgba(32,198,107,.3);
+      transition: .25s;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-5px) scale(1.04);
+    }
+
+    .floating-whatsapp svg {
+      width: 29px;
+      height: 29px;
+    }
+
+    /* =========================================
+       14. REVEAL ANIMATIONS
+       Content stays visible without JavaScript.
+    ========================================= */
+
+    .reveal {
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.reveal-hidden {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================
+       15. RESPONSIVE DESIGN
+    ========================================= */
+
+    @media (max-width: 1000px) {
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a:not(.btn) {
+        font-size: 12px;
+      }
+
+      .hero-grid {
+        gap: 20px;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .benefits-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .section {
+        padding: 75px 0;
+      }
+
+      .header {
+        height: 70px;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 69px;
+        left: 0;
+        right: 0;
+        padding: 22px 20px 26px;
+        background: #0B1220;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 17px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a:not(.btn) {
+        font-size: 15px;
+        padding: 5px 0;
+      }
+
+      .nav-links .btn {
+        width: 100%;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 75px;
+        padding-bottom: 50px;
+        gap: 15px;
+      }
+
+      .hero h1,
+      .hero-copy {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-note {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 340px;
+      }
+
+      .hero-phone {
+        max-height: 370px;
+        width: 230px;
+      }
+
+      .hero-visual::before {
+        width: 240px;
+        height: 240px;
+      }
+
+      .audience-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .audience-image {
+        max-height: 230px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2,1fr);
+        gap: 13px;
+      }
+
+      .gallery-card-content {
+        padding: 13px;
+      }
+
+      .gallery-card h3 {
+        font-size: 13px;
+      }
+
+      .gallery-card .btn {
+        font-size: 11px;
+        padding: 8px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-main,
+      .contact-form {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+        letter-spacing: -1.7px;
+      }
+
+      .hero-copy {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .steps-grid {
+        gap: 11px;
+      }
+
+      .step-card {
+        padding: 21px 15px;
+        min-height: 225px;
+      }
+
+      .step-card h3 {
+        font-size: 14px;
+      }
+
+      .step-card p {
+        font-size: 12px;
+      }
+
+      .step-number {
+        font-size: 23px;
+        top: 12px;
+        right: 13px;
+      }
+
+      .benefits-grid {
+        gap: 10px;
+      }
+
+      .benefit {
+        padding: 16px 11px;
+        min-height: 100px;
+        gap: 9px;
+      }
+
+      .benefit span {
+        font-size: 12px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-card-content {
+        padding: 17px;
+      }
+
+      .gallery-card h3 {
+        font-size: 15px;
+      }
+
+      .pricing-card {
+        padding: 35px 20px;
+      }
+
+      .faq-item summary {
+        padding: 17px;
+        font-size: 14px;
+      }
+
+      .faq-answer {
+        padding: 0 17px 18px;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .floating-whatsapp {
+        width: 54px;
+        height: 54px;
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal.reveal-hidden {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================
+       HEADER
+  ======================================== -->
+
+  <header class="header">
+    <div class="container nav-wrap">
+
+      <a href="#home" class="logo" aria-label="SiteSpark Studio home">
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M22 2L8 22H18L15 38L32 16H21L22 2Z"
+                fill="url(#sparkGradient)"/>
+          <defs>
+            <linearGradient id="sparkGradient" x1="8" y1="2" x2="32" y2="38">
+              <stop stop-color="#FFB020"/>
+              <stop offset="1" stop-color="#FF6A00"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>SiteSpark</span>
+      </a>
+
+      <button class="menu-toggle"
+              id="menuToggle"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="navLinks">
+        ☰
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Who we build for</a>
+        <a href="#process">How it works</a>
+        <a href="#gallery">Samples</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact" class="btn btn-primary">WhatsApp us ↗</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =======================================
+         1. HERO
+    ======================================== -->
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="hero-content reveal">
+
+          <div class="hero-badge">
+            <span class="spark-dot"></span>
+            WE BUILD WEBSITES FOR LOCAL BUSINESSES
+          </div>
+
+          <h1>
+            A website that brings customers to your
+            <span class="gradient-text">business.</span>
+          </h1>
+
+          <p class="hero-copy">
+            We build your free demo first. You pay only if you love it.
+            See how your own business website can look before making a decision.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary"
+               href="https://wa.me/919653132622?text=Hi%20SiteSpark%2C%20I%20want%20a%20website%20for%20my%20business">
+              Get my free demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+
+            <a class="btn btn-outline" href="#gallery">
+              See sample designs
+            </a>
+          </div>
+
+          <div class="hero-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+            No pressure. No advance payment for the demo.
+          </div>
+
+        </div>
+
+                <div class="hero-visual reveal">
+          <div class="hv" role="img" aria-label="A SiteSpark business website next to a WhatsApp message saying your free demo is ready">
+            <span class="hv-chip c1">📱 Mobile friendly</span>
+            <span class="hv-chip c2">📍 Google Maps</span>
+            <div class="hv-browser">
+              <div class="hv-bar"><i></i><i></i><i></i><div class="hv-url">yourbusiness.in</div></div>
+              <div class="hv-site">
+                <div class="hv-nav"><div class="hv-logo">Your Business</div><div class="hv-links"><b></b><b></b><b></b></div></div>
+                <div class="hv-h">Welcome to <span>your business.</span></div>
+                <div class="hv-l" style="width:78%"></div><div class="hv-l" style="width:56%"></div>
+                <div class="hv-btns"><b>Call now</b><b>WhatsApp</b></div>
+                <div class="hv-cards"><div></div><div></div><div></div></div>
+              </div>
+            </div>
+            <div class="hv-phone"><div class="hv-screen">
+              <div class="hv-wh"><div class="hv-av">⚡</div><div><strong>SiteSpark Studio</strong><small>online</small></div></div>
+              <div class="hv-chat">
+                <div class="hv-msg">Hello! Your free website demo is ready 👇
+                  <div class="hv-prev"><i></i><span>yourbusiness.in<small>Demo preview</small></span></div>
+                  <em>10:30 ✓✓</em></div>
+                <div class="hv-msg" style="align-self:flex-end;background:#005c4b">Great, please send it! 👍<em>10:31 ✓✓</em></div>
+              </div>
+            </div></div>
+            <span class="hv-chip c3">✅ Free demo first</span>
+            <span class="hv-chip c4">💬 WhatsApp</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================
+         2. WHO WE BUILD FOR
+    ======================================== -->
+
+    <section class="section" id="services">
+      <div class="container">
+
+        <div class="reveal">
+          <span class="section-label">WHO WE BUILD FOR</span>
+          <h2 class="section-heading">
+            Websites made for
+            <span class="gradient-text">your kind of business.</span>
+          </h2>
+          <p class="section-description">
+            Every business is different. Your website should show what makes yours special.
+          </p>
+        </div>
+
+        <div class="audience-grid">
+
+          <article class="audience-card glass-card reveal">
+            <div class="niche-image image-placeholder">
+              <img src="images/niche-gym.jpg"
+                   alt="Modern gym interior with premium fitness equipment"
+                   width="1200"
+                   height="800"
+                   loading="lazy"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="audience-content">
+              <h3>Gym & Fitness</h3>
+              <p>Show your gym, workout facilities, membership plans and timings.</p>
+            </div>
+          </article>
+
+          <article class="audience-card glass-card reveal">
+            <div class="niche-image image-placeholder">
+              <img src="images/niche-restaurant.jpg"
+                   alt="Warm and elegant restaurant interior"
+                   width="1200"
+                   height="800"
+                   loading="lazy"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="audience-content">
+              <h3>Restaurant & Cafe</h3>
+              <p>Show your food, menu, location, opening hours and contact details.</p>
+            </div>
+          </article>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================
+         3. HOW IT WORKS
+    ======================================== -->
+
+    <section class="section steps-section" id="process">
+      <div class="container">
+
+        <div class="reveal">
+          <span class="section-label">OUR SIMPLE PROCESS</span>
+          <h2 class="section-heading">
+            From first chat to
+            <span class="gradient-text">your live website.</span>
+          </h2>
+          <p class="section-description">
+            Four simple steps. You see your demo before deciding.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+
+          <article class="step-card glass-card reveal">
+            <span class="step-number">01</span>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.1-4.2A8.5 8.5 0 1 1 21 11.5Z"/>
+                <path d="M8 10h8M8 14h5"/>
+              </svg>
+            </div>
+            <h3>We send you a free demo on WhatsApp.</h3>
+            <p>We prepare a sample website using your business name and details.</p>
+          </article>
+
+          <article class="step-card glass-card reveal">
+            <span class="step-number">02</span>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5L12 3Z"/>
+                <path d="M19 15l1.5 2.5L23 19l-2.5 1.5L19 23l-1.5-2.5L15 19l2.5-1.5L19 15Z"/>
+              </svg>
+            </div>
+            <h3>You pick the design you like.</h3>
+            <p>Open the demo on your phone and see how it looks.</p>
+          </article>
+
+          <article class="step-card glass-card reveal">
+            <span class="step-number">03</span>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="4" y="3" width="16" height="18" rx="2"/>
+                <path d="M8 8h8M8 12h8M8 16h5"/>
+              </svg>
+            </div>
+            <h3>Share your business information.</h3>
+            <p>Fill a short form with timings, plans or menu, photos and contact details.</p>
+          </article>
+
+          <article class="step-card glass-card reveal">
+            <span class="step-number">04</span>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M8 12l2.5 2.5L16 9"/>
+              </svg>
+            </div>
+            <h3>We finish your website and put it live.</h3>
+            <p>After you decide to proceed, we complete the website with your real content.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================
+         4. WHAT YOU GET
+    ======================================== -->
+
+    <section class="section" id="benefits">
+      <div class="container">
+
+        <div class="reveal">
+          <span class="section-label">WHAT YOU GET</span>
+          <h2 class="section-heading">
+            Everything your business website
+            <span class="gradient-text">needs to show.</span>
+          </h2>
+          <p class="section-description">
+            Simple features that help customers understand your business and contact you.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+
+          <div class="benefit reveal">
+            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="6" y="2" width="12" height="20" rx="2"/>
+              <path d="M10 18h4"/>
+            </svg>
+            <span>Looks great on every phone</span>
+          </div>
+
+          <div class="benefit reveal">
+            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 2.8a2 2 0 0 1-.6 1.9L7.7 9.7a16 16 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.9-.6l2.8.5a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            <span>WhatsApp and Call buttons</span>
+          </div>
+
+          <div class="benefit reveal">
+            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+            <span>Google Maps location</span>
+          </div>
+
+          <div class="benefit reveal">
+            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 2"/>
+            </svg>
+            <span>Your real timings</span>
+          </div>
+
+          <div class="benefit reveal">
+            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 5h18M3 10h18M3 15h12M3 20h12"/>
+            </svg>
+            <span>Plans or menu</span>
+          </div>
+
+          <div class="benefit reveal">
+            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <span>Photo gallery</span>
+          </div>
+
+          <div class="benefit reveal">
+            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L4 14h7l-1 8 10-13h-7l0-7Z"/>
+            </svg>
+            <span>Fast loading</span>
+          </div>
+
+          <div class="benefit reveal">
+            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/>
+            </svg>
+            <span>Simple to update</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================
+         5. SAMPLE DESIGNS
+    ======================================== -->
+
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+
+        <div class="reveal">
+          <span class="section-label">OUR DESIGN COLLECTION</span>
+          <h2 class="section-heading">
+            Find a look that fits
+            <span class="gradient-text">your business.</span>
+          </h2>
+          <p class="section-description">
+            Explore different design directions for gyms and restaurants.
+            These are sample design concepts.
+          </p>
+        </div>
+
+        <div class="gallery-tabs" role="tablist" aria-label="Sample design categories">
+          <button class="tab-button active"
+                  role="tab"
+                  id="gymTab"
+                  aria-selected="true"
+                  aria-controls="gymGallery"
+                  data-tab="gymGallery">
+            Gym
+          </button>
+
+          <button class="tab-button"
+                  role="tab"
+                  id="restaurantTab"
+                  aria-selected="false"
+                  aria-controls="restaurantGallery"
+                  data-tab="restaurantGallery">
+            Restaurant & Cafe
+          </button>
+        </div>
+
+        <!-- GYM GALLERY -->
+
+        <div class="gallery-panel" id="gymGallery" role="tabpanel" aria-labelledby="gymTab">
+          <div class="gallery-grid">
+            <article class="gallery-card glass-card">
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-1.jpg" alt="Forge Red gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>01. Forge Red</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-1">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card">
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-2.jpg" alt="Neon Cyber gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>02. Neon Cyber</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-2">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card">
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-3.jpg" alt="Acid Lime gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>03. Acid Lime</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-3">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-4.jpg" alt="Sunset Glow gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>04. Sunset Glow</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-4">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-5.jpg" alt="Clean Light gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>05. Clean Light</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-5">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-6.jpg" alt="Gold Luxe gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>06. Gold Luxe</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-6">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-7.jpg" alt="Ice Frost gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>07. Ice Frost</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-7">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-8.jpg" alt="Blaze Orange gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>08. Blaze Orange</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-8">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-9.jpg" alt="Synthwave Neon gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>09. Synthwave Neon</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-9">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-gym-10.jpg" alt="Concrete Army gym website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>10. Concrete Army</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="gym-10">View demo ↗</a>
+              </div>
+            </article>
+
+          </div>
+          <div class="see-more-wrap"><button type="button" class="btn btn-outline see-more" data-target="gymGallery" aria-expanded="false">See more designs ↓</button></div>
+        </div><!-- RESTAURANT GALLERY -->
+
+        <div class="gallery-panel" id="restaurantGallery" role="tabpanel" aria-labelledby="restaurantTab" hidden>
+          <div class="gallery-grid">
+            <article class="gallery-card glass-card">
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-1.jpg" alt="Warm Classic restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>01. Warm Classic</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-1">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card">
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-2.jpg" alt="Ivory Bistro restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>02. Ivory Bistro</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-2">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card">
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-3.jpg" alt="Spice Market restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>03. Spice Market</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-3">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-4.jpg" alt="Cafe Pastel restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>04. Cafe Pastel</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-4">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-5.jpg" alt="Noir Grill restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>05. Noir Grill</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-5">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-6.jpg" alt="Garden Leaf restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>06. Garden Leaf</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-6">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-7.jpg" alt="Street Pop restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>07. Street Pop</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-7">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-8.jpg" alt="Royal Mughlai restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>08. Royal Mughlai</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-8">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-9.jpg" alt="Modern Minimal restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>09. Modern Minimal</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-9">View demo ↗</a>
+              </div>
+            </article>
+
+            <article class="gallery-card glass-card" data-extra hidden>
+              <div class="gallery-image image-placeholder">
+                <img src="images/gallery-rest-10.jpg" alt="Sunset Rooftop restaurant website sample design" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
+              </div>
+              <div class="gallery-card-content">
+                <h3>10. Sunset Rooftop</h3>
+                <!-- TODO: Add the real demo URL -->
+                <a class="btn btn-outline demo-link" href="#contact" data-demo="rest-10">View demo ↗</a>
+              </div>
+            </article>
+
+          </div>
+          <div class="see-more-wrap"><button type="button" class="btn btn-outline see-more" data-target="restaurantGallery" aria-expanded="false">See more designs ↓</button></div>
+        </div></div>
+    </section>
+
+    <!-- =======================================
+         6. PRICING
+    ======================================== -->
+
+    <section class="section" id="pricing">
+      <div class="container">
+
+        <div class="reveal" style="text-align:center">
+          <span class="section-label">SIMPLE AND HONEST</span>
+          <h2 class="section-heading" style="margin:auto">
+            See your demo.
+            <span class="gradient-text">Decide later.</span>
+          </h2>
+          <p class="section-description" style="margin-inline:auto">
+            No pressure to buy. First see what your website could look like.
+          </p>
+        </div>
+
+        <div class="plans reveal">
+          <div class="plan glass-card">
+            <h3>Basic</h3>
+            <p class="plan-for">Website live on a free SiteSpark link</p>
+            <div class="price">₹2,999</div>
+            <div class="once">one-time, no monthly fee</div>
+            <ul>
+              <li>One-page website for your business</li>
+              <li>Live on a free web link</li>
+              <li>WhatsApp, Call and Google Maps buttons</li>
+              <li>Photo gallery and your real details</li>
+              <li>2 free changes after it goes live</li>
+            </ul>
+            <a class="btn btn-outline" href="https://wa.me/919653132622?text=Hi%20SiteSpark%2C%20I%20am%20interested%20in%20the%20Basic%20plan%20%28Rs%202%2C999%29">Choose Basic ↗</a>
+          </div>
+          <div class="plan glass-card best">
+            <span class="plan-tag">YOUR OWN NAME</span>
+            <h3>Standard</h3>
+            <p class="plan-for">Website on your own web address</p>
+            <div class="price">₹4,999</div>
+            <div class="once">one-time, no monthly fee</div>
+            <ul>
+              <li>Everything in Basic</li>
+              <li>Your own address, like yourbusiness.in</li>
+              <li>We connect the domain for you</li>
+              <li>Domain is bought in your name</li>
+              <li>2 free changes after it goes live</li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/919653132622?text=Hi%20SiteSpark%2C%20I%20am%20interested%20in%20the%20Standard%20plan%20%28Rs%204%2C999%29">Choose Standard ↗</a>
+          </div>
+        </div>
+        <p class="plans-note">Demo is always free, with no advance. You pay only after you approve it. For Standard, the domain name fee (a yearly charge to the domain company) is separate.</p>
+
+      </div>
+    </section>
+
+    <!-- =======================================
+         7. FAQ
+    ======================================== -->
+
+    <section class="section" id="faq">
+      <div class="container">
+
+        <div class="reveal" style="text-align:center">
+          <span class="section-label">GOT QUESTIONS?</span>
+          <h2 class="section-heading" style="margin:auto">
+            Things you may
+            <span class="gradient-text">want to know.</span>
+          </h2>
+        </div>
+
+        <div class="faq-list">
+
+          <details class="faq-item reveal">
+            <summary>Is the demo really free?</summary>
+            <div class="faq-answer">
+              Yes. We prepare a sample website for your business first.
+              There is no advance payment for the demo.
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>How long does it take?</summary>
+            <div class="faq-answer">
+              The time depends on your website and the information needed.
+              We will discuss the expected timeline with you on WhatsApp.
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>Can I use my own photos?</summary>
+            <div class="faq-answer">
+              Yes. We can use your real business photos, gym equipment,
+              food, interiors and other pictures you share.
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>Will it work on mobile?</summary>
+            <div class="faq-answer">
+              Yes. Our websites are designed to work on mobile phones,
+              tablets and desktop screens.
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>Do I need to buy a domain?</summary>
+            <div class="faq-answer">
+              We can help you buy a domain for your website.
+              The domain cost is separate.
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>What if I do not like the design?</summary>
+            <div class="faq-answer">
+              That is completely fine. If you do not like the demo,
+              you simply say no. There is no pressure to continue.
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================
+         8. CONTACT
+    ======================================== -->
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+
+        <div class="reveal">
+          <span class="section-label">LET'S TALK</span>
+          <h2 class="section-heading">
+            Let's build something
+            <span class="gradient-text">for your business.</span>
+          </h2>
+          <p class="section-description">
+            Tell us a little about your business. We will take it from there.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-main glass-card reveal">
+
+            <h3>Ready to see your free demo?</h3>
+            <p>
+              Start a conversation with us. Tell us what kind of business you run.
+            </p>
+
+            <div class="contact-buttons">
+
+              <a class="btn btn-primary"
+                 href="https://wa.me/919653132622?text=Hi%20SiteSpark%2C%20I%20want%20a%20website%20for%20my%20business">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.1-4.2A8.5 8.5 0 1 1 21 11.5Z"/>
+                </svg>
+                Chat on WhatsApp
+              </a>
+
+              <a class="btn btn-outline" href="tel:+919653132622">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 2.8a2 2 0 0 1-.6 1.9L7.7 9.7a16 16 0 0 0 6.6 6.6l1.3-1.3a2 2 0 0 1 1.9-.6l2.8.5a2 2 0 0 1 1.7 2Z"/>
+                </svg>
+                Call +91 96531 32622
+              </a>
+
+            </div>
+
+            <div class="location-box">
+              <div class="location-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="2.5"/>
+                </svg>
+              </div>
+              <div>
+                <small>OUR LOCATION</small>
+                <strong><a href="https://maps.app.goo.gl/4en8Vsk3hZveqfaU7" target="_blank" rel="noopener" style="color:inherit">Sangam Nagar, Mumbai ↗</a></strong>
+              </div>
+            </div>
+
+          </div>
+
+          <form class="contact-form glass-card reveal" id="contactForm">
+
+            <h3>Tell us about your business</h3>
+            <p>Fill in three simple details. We will open WhatsApp with your message.</p>
+
+            <div class="form-group">
+              <label for="customerName">Your name</label>
+              <input type="text"
+                     id="customerName"
+                     name="name"
+                     placeholder="Enter your name"
+                     autocomplete="name"
+                     maxlength="80"
+                     required>
+            </div>
+
+            <div class="form-group">
+              <label for="businessType">Business type</label>
+              <select id="businessType" name="business" required>
+                <option value="">Select your business</option>
+                <option value="Gym & Fitness">Gym & Fitness</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Cafe">Cafe</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="customerCity">Your city</label>
+              <input type="text"
+                     id="customerCity"
+                     name="city"
+                     placeholder="Enter your city"
+                     autocomplete="address-level2"
+                     maxlength="80"
+                     required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Send on WhatsApp ↗
+            </button>
+
+            <p class="form-note">
+              Your message opens directly in our WhatsApp. We will reply soon.
+            </p>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================
+       9. FOOTER
+  ======================================== -->
+
+  <footer class="footer">
+    <div class="container footer-content">
+
+      <div>
+        <a href="#home" class="logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M22 2L8 22H18L15 38L32 16H21L22 2Z" fill="#FF9A13"/>
+          </svg>
+          <span>SiteSpark</span>
+        </a>
+        <p class="footer-description">
+          Premium websites for local businesses.
+        </p>
+      </div>
+
+      <p class="footer-copy">
+        © <span id="currentYear">2026</span> SiteSpark Studio. All rights reserved.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+
+  <a class="floating-whatsapp"
+     href="https://wa.me/919653132622?text=Hi%20SiteSpark%2C%20I%20want%20a%20website%20for%20my%20business"
+     aria-label="Chat with SiteSpark on WhatsApp"
+     target="_blank"
+     rel="noopener noreferrer">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.1-4.2A8.5 8.5 0 1 1 21 11.5Z"/>
+      <path d="M8.5 9c.5 2.5 2 4 4.5 4.5l1-1 2 1-.5 1.5c-4 1-8-3-8-7l1.5-.5 1 2Z"/>
+    </svg>
+
+  </a>
+
+  <!-- =======================================
+       JAVASCRIPT
+  ======================================== -->
+
+  <script>
+    /* =====================================
+       1. MOBILE NAVIGATION
+    ===================================== */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    // Close the menu after clicking a navigation link.
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Close menu with Escape.
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      }
+    });
+
+
+    // See more / See less: first 3 designs show, rest toggle on click.
+    document.querySelectorAll(".see-more").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const panel = document.getElementById(btn.dataset.target);
+        const open = btn.getAttribute("aria-expanded") === "true";
+        panel.querySelectorAll("[data-extra]").forEach(c => { c.hidden = open; });
+        btn.setAttribute("aria-expanded", String(!open));
+        btn.textContent = open ? "See more designs ↓" : "See less designs ↑";
+        if (open) {
+          const top = panel.getBoundingClientRect().top + window.scrollY - 110;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      });
+    });
+
+    /* =====================================
+       2. GALLERY TABS
+    ===================================== */
+
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const galleryPanels = document.querySelectorAll(".gallery-panel");
+
+    tabButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const targetId = button.dataset.tab;
+
+        tabButtons.forEach(tab => {
+          const active = tab === button;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-selected", String(active));
+        });
+
+        galleryPanels.forEach(panel => {
+          panel.hidden = panel.id !== targetId;
+        });
+      });
+    });
+
+    // Keyboard support for tab switching.
+    tabButtons.forEach((button, index) => {
+      button.addEventListener("keydown", event => {
+        if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+          event.preventDefault();
+
+          const direction = event.key === "ArrowRight" ? 1 : -1;
+          const nextIndex =
+            (index + direction + tabButtons.length) % tabButtons.length;
+
+          tabButtons[nextIndex].focus();
+          tabButtons[nextIndex].click();
+        }
+      });
+    });
+
+
+    /* =====================================
+       3. CONTACT FORM TO WHATSAPP
+    ===================================== */
+
+    const contactForm = document.getElementById("contactForm");
+
+    contactForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const name = document.getElementById("customerName").value.trim();
+      const business = document.getElementById("businessType").value;
+      const city = document.getElementById("customerCity").value.trim();
+
+      if (!name || !business || !city) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      const message =
+        "Hi SiteSpark, I want a website for my business.\n\n" +
+        "Name: " + name + "\n" +
+        "Business type: " + business + "\n" +
+        "City: " + city;
+
+      const whatsappURL =
+        "https://wa.me/919653132622?text=" +
+        encodeURIComponent(message);
+
+      window.open(whatsappURL, "_blank", "noopener,noreferrer");
+    });
+
+
+    /* =====================================
+       4. GALLERY DEMO PLACEHOLDERS
+    ===================================== */
+
+    // Each demo opens the real sample template from the demos folder.
+
+    const demoLinks = {
+      "gym-1": "designs/gym/gym_preview_01.html",
+      "gym-2": "designs/gym/gym_preview_02.html",
+      "gym-3": "designs/gym/gym_preview_03.html",
+      "gym-4": "designs/gym/gym_preview_04.html",
+      "gym-5": "designs/gym/gym_preview_05.html",
+      "gym-6": "designs/gym/gym_preview_06.html",
+      "gym-7": "designs/gym/gym_preview_07.html",
+      "gym-8": "designs/gym/gym_preview_08.html",
+      "gym-9": "designs/gym/gym_preview_09.html",
+      "gym-10": "designs/gym/gym_preview_10.html",
+      "rest-1": "designs/restaurant/restaurant_preview_01.html",
+      "rest-2": "designs/restaurant/restaurant_preview_02.html",
+      "rest-3": "designs/restaurant/restaurant_preview_03.html",
+      "rest-4": "designs/restaurant/restaurant_preview_04.html",
+      "rest-5": "designs/restaurant/restaurant_preview_05.html",
+      "rest-6": "designs/restaurant/restaurant_preview_06.html",
+      "rest-7": "designs/restaurant/restaurant_preview_07.html",
+      "rest-8": "designs/restaurant/restaurant_preview_08.html",
+      "rest-9": "designs/restaurant/restaurant_preview_09.html",
+      "rest-10": "designs/restaurant/restaurant_preview_10.html"
+    };
+
+    document.querySelectorAll(".demo-link").forEach(link => {
+      link.addEventListener("click", event => {
+        const demoUrl = demoLinks[link.dataset.demo];
+
+        if (demoUrl) {
+          event.preventDefault();
+          window.open(demoUrl, "_blank", "noopener,noreferrer");
+        } else {
+          event.preventDefault();
+          document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+        }
+      });
+    });
+
+
+    /* =====================================
+       5. SCROLL REVEAL
+       If JavaScript or IntersectionObserver
+       is unavailable, all content stays visible.
+    ===================================== */
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if (
+      "IntersectionObserver" in window &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("reveal-hidden");
+            entry.target.classList.add("revealed");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: "0px 0px -30px 0px"
+      });
+
+      revealElements.forEach(element => {
+        element.classList.add("reveal-hidden");
+        revealObserver.observe(element);
+      });
+    }
+
+
+    /* =====================================
+       6. CURRENT COPYRIGHT YEAR
+    ===================================== */
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
