@@ -778,6 +778,15 @@
     .plans-note{text-align:center;color:var(--muted);font-size:14px;max-width:640px;margin:26px auto 0}
     @media (max-width:760px){.plans{grid-template-columns:1fr}}
 
+
+    .reviews-box{max-width:720px;margin:34px auto 0;padding:34px 28px;text-align:center}
+    .reviews-list{display:grid;gap:16px;margin-bottom:6px}
+    .review-card{text-align:left;padding:20px 22px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04)}
+    .review-card p{margin:0 0 10px;color:#e6ebf5}
+    .review-card small{color:var(--muted)}
+    .review-stars{color:#f5b301;letter-spacing:2px;margin-bottom:8px}
+    .reviews-empty{color:var(--muted);margin:0 0 6px}
+
     /* =========================================
        10. FAQ
     ========================================= */
@@ -1965,6 +1974,24 @@
          7. FAQ
     ======================================== -->
 
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="reveal" style="text-align:center">
+          <span class="section-label">REVIEWS</span>
+          <h2 class="section-heading" style="margin:auto">
+            What our clients
+            <span class="gradient-text">say.</span>
+          </h2>
+        </div>
+        <div class="reviews-box glass-card reveal">
+          <!-- Add a real review here after a client agrees: copy one <div class="review-card"> block into #reviewsList. Never add a review that a real client did not write. -->
+          <div class="reviews-list" id="reviewsList"></div>
+          <p class="reviews-empty" id="reviewsEmpty">No reviews yet. Be the first to share your experience.</p>
+          <a class="btn btn-outline" href="https://wa.me/919653132622?text=Hi%20SiteSpark%20Studio%2C%20here%20is%20my%20review%3A%0A%0AName%3A%0ABusiness%3A%0AReview%3A" target="_blank" rel="noopener">Write a review on WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="faq">
       <div class="container">
 
@@ -2229,6 +2256,13 @@
       }
     });
 
+
+
+    // Reviews: the empty message hides itself as soon as a real review card is added to #reviewsList.
+    (function () {
+      const list = document.getElementById("reviewsList"), empty = document.getElementById("reviewsEmpty");
+      if (list && empty && list.children.length) empty.style.display = "none";
+    })();
 
     // See more / See less: first 3 designs show, rest toggle on click.
     document.querySelectorAll(".see-more").forEach(btn => {
