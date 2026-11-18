@@ -779,13 +779,25 @@
     @media (max-width:760px){.plans{grid-template-columns:1fr}}
 
 
-    .reviews-box{max-width:720px;margin:34px auto 0;padding:34px 28px;text-align:center}
-    .reviews-list{display:grid;gap:16px;margin-bottom:6px}
-    .review-card{text-align:left;padding:20px 22px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04)}
-    .review-card p{margin:0 0 10px;color:#e6ebf5}
+    .reviews-box{max-width:760px;margin:34px auto 0;padding:30px 26px}
+    .rv-summary{text-align:center;margin-bottom:18px;color:var(--muted)}
+    .rv-summary b{color:#fff;font-size:1.6rem;margin-right:8px}
+    .rv-stars{color:#f5b301;letter-spacing:2px}
+    .reviews-list{display:grid;gap:14px;margin-bottom:22px}
+    .review-card{text-align:left;padding:18px 20px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04)}
+    .review-card p{margin:8px 0 10px;color:#e6ebf5;overflow-wrap:anywhere}
     .review-card small{color:var(--muted)}
-    .review-stars{color:#f5b301;letter-spacing:2px;margin-bottom:8px}
-    .reviews-empty{color:var(--muted);margin:0 0 6px}
+    .reviews-empty{color:var(--muted);text-align:center;margin:0 0 22px}
+    .rv-form{border-top:1px solid rgba(255,255,255,.10);padding-top:22px;display:grid;gap:12px;text-align:left}
+    .rv-form h3{margin:0;font-size:1.1rem;text-align:center}
+    .rv-pick{display:flex;justify-content:center;gap:6px}
+    .rv-pick button{background:none;border:0;cursor:pointer;font-size:2.1rem;line-height:1;color:rgba(255,255,255,.25);padding:2px 4px}
+    .rv-pick button.on{color:#f5b301}
+    .rv-form input[type=text],.rv-form textarea{width:100%;box-sizing:border-box;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:#fff;font:inherit}
+    .rv-form textarea{min-height:90px;resize:vertical}
+    .rv-hp{position:absolute;left:-9999px;opacity:0}
+    .rv-msg{text-align:center;min-height:1.3em;font-size:.95rem}
+    .rv-msg.err{color:#ff8a8a}.rv-msg.ok{color:#7ee2a0}
 
     /* =========================================
        10. FAQ
@@ -1984,10 +1996,18 @@
           </h2>
         </div>
         <div class="reviews-box glass-card reveal">
-          <!-- Add a real review here after a client agrees: copy one <div class="review-card"> block into #reviewsList. Never add a review that a real client did not write. -->
+          <div class="rv-summary" id="rvSummary" hidden></div>
           <div class="reviews-list" id="reviewsList"></div>
           <p class="reviews-empty" id="reviewsEmpty">No reviews yet. Be the first to share your experience.</p>
-          <a class="btn btn-outline" href="https://wa.me/919653132622?text=Hi%20SiteSpark%20Studio%2C%20here%20is%20my%20review%3A%0A%0AName%3A%0ABusiness%3A%0AReview%3A" target="_blank" rel="noopener">Write a review on WhatsApp ↗</a>
+          <form class="rv-form" id="rvForm" novalidate>
+            <h3>Leave a review</h3>
+            <div class="rv-pick" id="rvPick" role="radiogroup" aria-label="Rating"></div>
+            <input type="text" id="rvName" maxlength="60" placeholder="Your name" autocomplete="name" />
+            <textarea id="rvText" maxlength="500" placeholder="Write your review (optional)"></textarea>
+            <input type="text" id="rvHp" class="rv-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button class="btn btn-primary" type="submit" id="rvSubmit">Submit review</button>
+            <div class="rv-msg" id="rvMsg" role="status"></div>
+          </form>
         </div>
       </div>
     </section>
@@ -2258,10 +2278,94 @@
 
 
 
-    // Reviews: the empty message hides itself as soon as a real review card is added to #reviewsList.
+    // ---- Reviews (Google Form to submit, published Google Sheet CSV to read) ----
+    // Only rows with "yes" in the Approved column are shown. Delete a row in the Sheet to remove it.
     (function () {
-      const list = document.getElementById("reviewsList"), empty = document.getElementById("reviewsEmpty");
-      if (list && empty && list.children.length) empty.style.display = "none";
+      const FORM = "https://docs.google.com/forms/d/e/1FAIpQLSerqxRn9zZuKtBX4MwpmH86YnnhFFxqKs342oIyexH-0QQRVQ/formResponse";
+      const E = { name: "entry.1595675605", rating: "entry.1369024108", review: "entry.402553719" };
+      const CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS9OklB-942r_LlVqB2wWiQkz5jOjQ4GcJsLdbeVkEYBjECEqPLFOhvP6qblbocpNT9T9tZW9-LmPUd/pub?gid=1661513170&single=true&output=csv";
+      const $ = (id) => document.getElementById(id);
+      let rating = 0;
+
+      const pick = $("rvPick");
+      for (let i = 1; i <= 5; i++) {
+        const b = document.createElement("button");
+        b.type = "button"; b.textContent = "★"; b.setAttribute("aria-label", i + " star" + (i > 1 ? "s" : ""));
+        b.addEventListener("click", () => { rating = i; [...pick.children].forEach((x, k) => x.classList.toggle("on", k < i)); });
+        pick.appendChild(b);
+      }
+
+      function msg(t, c) { const m = $("rvMsg"); m.textContent = t; m.className = "rv-msg " + (c || ""); }
+
+      $("rvForm").addEventListener("submit", async (ev) => {
+        ev.preventDefault();
+        if ($("rvHp").value) return;
+        const name = $("rvName").value.trim(), text = $("rvText").value.trim();
+        if (!rating) return msg("Please choose a star rating.", "err");
+        if (!name) return msg("Please enter your name.", "err");
+        try { if (Date.now() - Number(localStorage.getItem("rvLast") || 0) < 60000) return msg("Please wait a minute before sending another review.", "err"); } catch (e) {}
+        const btn = $("rvSubmit"); btn.disabled = true; msg("Sending...");
+        const body = new URLSearchParams();
+        body.set(E.name, name); body.set(E.rating, String(rating)); body.set(E.review, text);
+        try {
+          await fetch(FORM, { method: "POST", mode: "no-cors", body });
+          try { localStorage.setItem("rvLast", String(Date.now())); } catch (e) {}
+          $("rvText").value = ""; $("rvName").value = ""; rating = 0;
+          [...pick.children].forEach((x) => x.classList.remove("on"));
+          msg("Thank you! Your review will appear on the site after we approve it.", "ok");
+        } catch (e) {
+          msg("Could not send. Please check your internet and try again.", "err");
+        }
+        btn.disabled = false;
+      });
+
+      function parseCSV(t) {
+        const rows = []; let row = [], f = "", q = false;
+        for (let i = 0; i < t.length; i++) {
+          const c = t[i];
+          if (q) { if (c === '"') { if (t[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+          else if (c === '"') q = true;
+          else if (c === ",") { row.push(f); f = ""; }
+          else if (c === "\n") { row.push(f); rows.push(row); row = []; f = ""; }
+          else if (c !== "\r") f += c;
+        }
+        if (f || row.length) { row.push(f); rows.push(row); }
+        return rows;
+      }
+
+      async function load() {
+        if (!CSV || CSV.indexOf("http") !== 0) return;
+        try {
+          const r = await fetch(CSV, { cache: "no-store" });
+          if (!r.ok) return;
+          const rows = parseCSV(await r.text());
+          const h = rows.shift().map((x) => x.trim().toLowerCase());
+          const ix = (n) => h.indexOf(n);
+          const items = rows.map((c) => ({
+            name: (c[ix("name")] || "").trim(), rating: parseInt(c[ix("rating")], 10),
+            review: (c[ix("review")] || "").trim(), ok: (c[ix("approved")] || "").trim().toLowerCase() === "yes",
+            date: (c[ix("timestamp")] || "").trim()
+          })).filter((x) => x.ok && x.name && x.rating >= 1 && x.rating <= 5);
+          if (!items.length) return;
+          const list = $("reviewsList"); list.textContent = "";
+          items.reverse().forEach((x) => {
+            const d = document.createElement("div"); d.className = "review-card";
+            const st = document.createElement("div"); st.className = "rv-stars"; st.textContent = "★".repeat(x.rating) + "☆".repeat(5 - x.rating);
+            d.appendChild(st);
+            if (x.review) { const p = document.createElement("p"); p.textContent = x.review; d.appendChild(p); }
+            const sm = document.createElement("small"); sm.textContent = "— " + x.name; d.appendChild(sm);
+            list.appendChild(d);
+          });
+          const avg = items.reduce((a, x) => a + x.rating, 0) / items.length;
+          const sum = $("rvSummary");
+          sum.textContent = "";
+          const b = document.createElement("b"); b.textContent = avg.toFixed(1);
+          const s2 = document.createElement("span"); s2.className = "rv-stars"; s2.textContent = "★";
+          sum.append(b, s2, " from " + items.length + " review" + (items.length > 1 ? "s" : ""));
+          sum.hidden = false; $("reviewsEmpty").style.display = "none";
+        } catch (e) { /* keep empty state */ }
+      }
+      load();
     })();
 
     // See more / See less: first 3 designs show, rest toggle on click.
