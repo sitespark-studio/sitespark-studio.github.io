@@ -784,6 +784,8 @@
     .rv-summary b{color:#fff;font-size:1.6rem;margin-right:8px}
     .rv-stars{color:#f5b301;letter-spacing:2px}
     .reviews-list{display:grid;gap:14px;margin-bottom:22px}
+    .review-card.rv-hide{display:none}
+    .rv-more{justify-self:center;padding:10px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:transparent;color:inherit;font:inherit;cursor:pointer}
     .review-card{text-align:left;padding:18px 20px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04)}
     .review-card p{margin:8px 0 10px;color:#e6ebf5;overflow-wrap:anywhere}
     .review-card small{color:var(--muted)}
@@ -2356,6 +2358,18 @@
             const sm = document.createElement("small"); sm.textContent = "— " + x.name; d.appendChild(sm);
             list.appendChild(d);
           });
+          const cards = list.querySelectorAll(".review-card");
+          if (cards.length > 3) {
+            cards.forEach((c, i) => { if (i >= 3) c.classList.add("rv-hide"); });
+            const more = document.createElement("button"); more.type = "button"; more.className = "rv-more"; more.textContent = "See more reviews";
+            let open = false;
+            more.addEventListener("click", () => {
+              open = !open;
+              cards.forEach((c, i) => { if (i >= 3) c.classList.toggle("rv-hide", !open); });
+              more.textContent = open ? "See less" : "See more reviews";
+            });
+            list.appendChild(more);
+          }
           const avg = items.reduce((a, x) => a + x.rating, 0) / items.length;
           const sum = $("rvSummary");
           sum.textContent = "";
