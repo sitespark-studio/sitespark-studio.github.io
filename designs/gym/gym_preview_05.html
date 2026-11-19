@@ -553,7 +553,21 @@ body{overflow-x:clip;max-width:100%}
   body:not(.V-center2) #journey .split .ph-trainer{width:clamp(220px,calc(25 * var(--vw)),600px);margin-top:30px;flex:0 0 auto}
 }
 </style>
-</head>
+<style>
+.rvw-in{max-width:760px}
+.rvw-score{display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 26px;border:1px solid rgba(128,128,128,.35);border-radius:16px;background:rgba(128,128,128,.08)}
+.rvw-score b{font-size:2.6rem;line-height:1;font-weight:800}
+.rvw-stars{position:relative;display:inline-block;font-size:1.55rem;letter-spacing:2px;line-height:1;font-style:normal;white-space:nowrap}
+.rvw-stars i{font-style:normal;color:rgba(128,128,128,.45);display:block}
+.rvw-stars i+i{position:absolute;left:0;top:0;overflow:hidden;color:#f5b301}
+.rvw-sub{opacity:.8;font-size:.95rem}
+.rvw-empty{opacity:.85;margin:0}
+.rvw-btn{display:inline-block;margin-top:22px;padding:13px 26px;border-radius:999px;border:1px solid currentColor;color:inherit;text-decoration:none;font-weight:600}
+.rvw-btn:hover{opacity:.8}
+.rvw.rest{padding:72px 6vw;text-align:center}
+.rvw.rest .rvw-in{margin:0 auto}
+.rvw.rest .ey{display:flex;justify-content:center}
+</style><style>body[class*="V-"]:not(.V-classic)>footer{order:200}body[class*="V-"]:not(.V-classic)>#reviews{order:140}</style></head>
 <body class="L-zigzag t-05 V-editorial">
 <canvas id="bg"></canvas>
 <div class="demobar">DEMO PREVIEW by SiteSpark Studio. This is a sample layout. WhatsApp +91 96531 32622 to get a website like this for your business.</div>
@@ -701,7 +715,7 @@ body{overflow-x:clip;max-width:100%}
   </div>
 </section>
 
-<section id="contact" class="right">
+<section class="rvw" id="reviews"><div class="tag">Reviews</div><h2>What Our <span>Members Say</span></h2><div class="rvw-in"><p class="rvw-empty">No reviews yet. Be the first to share your experience.</p><div><a class="rvw-btn" href="https://maps.app.goo.gl/4en8Vsk3hZveqfaU7" target="_blank" rel="noopener">Read &amp; write reviews on Google ↗</a></div></div></section><section id="contact" class="right">
   <div class="tag rv">Join Today</div>
   <h2 class="rv">Your First Rep <span>Starts Here</span></h2>
   <div class="cwrap">
