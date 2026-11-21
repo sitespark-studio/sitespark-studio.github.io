@@ -2281,7 +2281,7 @@
 
 
     // ---- Reviews (Google Form to submit, published Google Sheet CSV to read) ----
-    // Only rows with "yes" in the Approved column are shown. Delete a row in the Sheet to remove it.
+    // Every review is shown. To hide one: write "no" in its Approved column (or delete the row) in the Sheet.
     (function () {
       const FORM = "https://docs.google.com/forms/d/e/1FAIpQLSerqxRn9zZuKtBX4MwpmH86YnnhFFxqKs342oIyexH-0QQRVQ/formResponse";
       const E = { name: "entry.1595675605", rating: "entry.1369024108", review: "entry.402553719" };
@@ -2345,7 +2345,7 @@
           const ix = (n) => h.indexOf(n);
           const items = rows.map((c) => ({
             name: (c[ix("name")] || "").trim(), rating: parseInt(c[ix("rating")], 10),
-            review: (c[ix("review")] || "").trim(), ok: (c[ix("approved")] || "").trim().toLowerCase() === "yes",
+            review: (c[ix("review")] || "").trim(), ok: (c[ix("approved")] || "").trim().toLowerCase() !== "no",
             date: (c[ix("timestamp")] || "").trim()
           })).filter((x) => x.ok && x.name && x.rating >= 1 && x.rating <= 5);
           if (!items.length) return;
